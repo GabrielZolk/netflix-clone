@@ -1,26 +1,42 @@
 import React, { useEffect } from "react";
 import { getMovies } from "../api";
+import "./Row.css";
 
-function Row({ title, path }) {
+const imageHost = "https://image.tmdb.org/t/p/original/"
+function Row({ title, path, isLarge }) {
     const [movies, setMovies] = React.useState([]);
 
     const fetchMovies = async (_path) => {
         try {
-            const data = await getMovies(_path)
+            const data = await getMovies(_path);
             setMovies(data?.results);
         } catch (error) {
-            console.log("fetchMovies error: ", error)
+            console.log("fetchMovies error: ", error);
         }
-    }
+    };
 
     useEffect(() => {
-      fetchMovies(path)
-    }, [path])
-    
+        fetchMovies(path);
+    }, [path]);
+
 
     return (
-        <div>Row</div>
-    )
+        <div className="row-container">
+            <h2 className="row-header">{title}</h2>
+            <div className="row-cards">
+                {movies?.map((movie) => {
+                    return (
+                        <img
+                            className={`movie-card ${isLarge && "movie-card-large"}`}
+                            key={movie.id}
+                            src={`${imageHost}${movie.poster_path}`}
+                            alt={movie.name}>
+                        </img>
+                    );
+                })}
+            </div>
+        </div>
+    );
 }
 
 export default Row
