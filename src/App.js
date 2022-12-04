@@ -1,14 +1,15 @@
 import categories from './api';
 import './App.css';
 import Row from "./components/Row"
+import Banner from "./components/Banner"
 
 function App() {
   return (
     <div className="App">
       {/*Navbar*/}
       {/*Destaques*/}
+      <Banner />
       {/*Em alta*/}
-
       {/*Filmes por categoria*/}
       {categories.map((category) => {
         return (
