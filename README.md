@@ -10,7 +10,7 @@
 
 <br>
 
-## Sidebar + Seção 'Em alta' ⚫
+## Navbar + Seção 'Em alta' ⚫
 
 <br>
 
